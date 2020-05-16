@@ -1,148 +1,55 @@
-import React from 'react';
-import { MdAddShoppingCart } from 'react-icons/md';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import api from '../../services/api';
+import * as CartActions from '../../store/modules/cart/actions';
 
+import { MdAddShoppingCart } from 'react-icons/md';
+import { formatPrice } from '../../utils/formatPrice';
 import { ProductList } from './styles';
 
-function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
+class Home extends Component {
+  state = {
+    products: [],
+  };
 
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
+  async componentDidMount() {
+    const response = await api.get('products');
+    const data = response.data.map((product) => ({
+      ...product,
+      priceFormated: formatPrice(product.price),
+    }));
 
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
+    this.setState({ products: data });
+  }
 
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
+  handleAddProduct = (product) => {
+    const { addtocart } = this.props;
+    addtocart(product);
+  };
+  render() {
+    const { products } = this.state;
+    return (
+      <ProductList>
+        {products.map((product) => (
+          <li key={product.id}>
+            <img src={product.image} alt={product.title} />
 
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
-
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
-
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
-
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
-
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom2.jpg?ts=1586961574&ims=326x"
-          alt="tenis"
-        />
-
-        <strong>Tenis Olympikus Blackout</strong>
-        <span>R$: 139,99</span>
-        <button>
-          <div>
-            <MdAddShoppingCart size={16} color="fff" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+            <strong>{product.title}</strong>
+            <span>{product.priceFormated}</span>
+            <button onClick={() => this.handleAddProduct(product)}>
+              <div>
+                <MdAddShoppingCart size={16} color="fff" />3
+              </div>
+              <span>ADICIONAR AO CARRINHO</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(CartActions, dispatch);
 
-export default Home;
+export default connect(null, mapDispatchToProps)(Home);

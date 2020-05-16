@@ -16,8 +16,7 @@ export const ProductList = styled.ul`
       max-width: 250px;
       transition: transform 0.2s;
       :hover {
-        transform: rotateZ(8deg);
-        /* opacity: 0.9; */
+        opacity: 0.9;
       }
     }
     > strong {
