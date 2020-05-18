@@ -17,7 +17,7 @@ class Home extends Component {
     const response = await api.get('products');
     const data = response.data.map((product) => ({
       ...product,
-      priceFormated: formatPrice(product.price),
+      priceFormatted: formatPrice(product.price),
     }));
 
     this.setState({ products: data });
@@ -38,7 +38,7 @@ class Home extends Component {
             <img src={product.image} alt={product.title} />
 
             <strong>{product.title}</strong>
-            <span>{product.priceFormated}</span>
+            <span>{product.priceFormatted}</span>
             <button onClick={() => this.handleAddProduct(product.id)}>
               <div>
                 <MdAddShoppingCart size={16} color="fff" />
