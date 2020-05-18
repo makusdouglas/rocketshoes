@@ -1,3 +1,12 @@
+# getting started
+
+## `json-server server.json -p 3333`
+
+Run directly in the directory to start the API <br />
+to be used into your page.
+_-p_ this is your port, 3333 is the default value <br />
+in the application.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
