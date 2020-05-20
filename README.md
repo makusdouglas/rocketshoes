@@ -1,9 +1,25 @@
-# getting started
+# Sobre:
+Este projeto visa aplicar conhecimentos avançados sobre REDUX aplicado <br/>
+em um site simulando um e-comerce de modo simples, aplicando boas práticas de desenvolvimento <br/>
+e organização do projeto, de modo a facilitar o debug e futuras implementações.
 
-## `json-server server.json -p 3333`
+### Conhecimentos adiquiridos:
+Pude aprender sobre a arquitetura *flux*, onde o *redux* nos permite controlar estados <br/>
+globais da aplicação, assim como o *redux saga* ajuda a manipular as regras de negócio adjacentes <br/>
+a cada *action* realizada. <br/> <br/>
+Também ha o *Reactotron*, ferramenta de debug incrível, que nos permite monitorar todas as actions, <br/>
+bem como alterações nos estados globais, facilitando a compreenção e solução de bugs por parte da equipe <br/>
+de desenvolvimento.
+
+*O projeto foi desenvolvido no bootcamp GoStack da Rocketseat, seguindo as orientações <br/>
+do instrutor [Diego Fernandes](https://github.com/diego3g).*
+
+## getting started
+
+### `json-server server.json -p 3333`
 
 Run directly in the directory to start the API <br />
-to be used into your page.
+used into your page. <br/>
 _-p_ this is your port, 3333 is the default value <br />
 in the application.
 
